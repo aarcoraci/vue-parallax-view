@@ -7,7 +7,7 @@
       :id="`layer_${layer.name}`"
       :key="index"
       :style="{
-        backgroundImage: 'url(' + layer.img + ')',
+        backgroundImage: 'url(' + loadImage(layer.img) + ')',
         left: layer.horizontalOffset,
         right: layer.horizontalOffset,
         top: layer.verticalOffset,
@@ -45,6 +45,9 @@ export default {
     }
   },
   methods: {
+    loadImage(image) {
+      return require(`@/assets/${image}`);
+    },
     animateStage() {
 
       requestAnimationFrame(this.animateStage);
