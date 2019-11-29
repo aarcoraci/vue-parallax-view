@@ -61,8 +61,8 @@ export default {
 #parallax {
   margin: 0 auto;
   background-color: red;
-  width: 900px;
-  height: 900px;
+  width: 100vw;
+  height: 100vh;
   position: relative;
 
   .mouse-pos {
@@ -79,8 +79,8 @@ export default {
     left: 50%;
     top: 50%;
     background-color: lightsalmon;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     will-change: transform;
     transition: 250ms all linear;
   }
