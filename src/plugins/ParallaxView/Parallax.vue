@@ -24,7 +24,10 @@ export default {
     return {
       mouseX: 0,
       mouseY: 0,
-      stageLayers: []
+      stageLayers: [],
+      windowWidth: 0,
+      windowHeight: 0,
+      centerCoords: { x: 0, y: 0 }
     }
   },
   props: {
@@ -46,13 +49,9 @@ export default {
 
       requestAnimationFrame(this.animateStage);
 
-      // values will be relative to the mouse position within the window and its center
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-
       // create a relation between how much the mouse has drifted from 0,0 (center of screen)
-      const horizontalDistanceFromCenter = Math.abs(this.mouseX - windowWidth / 2);
-      const verticalDistanceFromCenter = Math.abs(this.mouseY - windowHeight / 2);
+      const horizontalDistanceFromCenter = Math.abs(this.mouseX - this.centerCoords.x);
+      const verticalDistanceFromCenter = Math.abs(this.mouseY - this.centerCoords.y);
 
       for (let index = 0; index < this.stageLayers.length; index++) {
         const layer = this.stageLayers[index];
@@ -61,12 +60,12 @@ export default {
         }
 
         // calculate how much the layer respond to movement based on the displacement value
-        const amountOfHorizontalMovement = horizontalDistanceFromCenter * layer.horizontalDisplacement / (windowWidth / 2);
-        const amountOfVerticalMovement = verticalDistanceFromCenter * layer.verticalDisplacement / (windowHeight / 2);
+        const amountOfHorizontalMovement = horizontalDistanceFromCenter * layer.horizontalDisplacement / this.centerCoords.x;
+        const amountOfVerticalMovement = verticalDistanceFromCenter * layer.verticalDisplacement / this.centerCoords.y;
 
         // assign a direction opposite to mouse movement
-        const horizontalDirection = this.mouseX - windowWidth / 2 > 0 ? -1 : 1;
-        const verticalDirection = this.mouseY - windowHeight / 2 > 0 ? -1 : 1;
+        const horizontalDirection = this.mouseX - this.centerCoords.x > 0 ? -1 : 1;
+        const verticalDirection = this.mouseY - this.centerCoords.y > 0 ? -1 : 1;
 
         const xMovement = amountOfHorizontalMovement * horizontalDirection * 100;
         const yMovement = amountOfVerticalMovement * verticalDirection * 100;
@@ -78,6 +77,12 @@ export default {
     onMouseMove(evt) {
       this.mouseX = evt.screenX;
       this.mouseY = evt.screenY;
+    },
+    onWindowResize() {
+      this.windowWidth = window.innerWidth;
+      this.windowHeight = window.innerHeight;
+      this.centerCoords.x = this.windowWidth / 2;
+      this.centerCoords.y = this.windowHeight / 2;
     }
   },
   beforeMount() {
@@ -95,13 +100,16 @@ export default {
       });
     });
 
-    this.animateStage();
   },
   mounted() {
     window.addEventListener("mousemove", this.onMouseMove);
+    window.addEventListener("resize", this.onWindowResize);
+    this.onWindowResize();
+    this.animateStage();
   },
   beforeDestroy() {
     window.removeEventListener("mousemove", this.onMouseMove);
+    window.removeEventListener("resize", this.onWindowResize);
   }
 }
 </script>
@@ -127,7 +135,7 @@ export default {
     position: absolute;
     transform-origin: left bottom;
     will-change: transform;
-    transition: 300ms all linear;
+    transition: 300ms transform linear;
     background-repeat: no-repeat;
     background-size: cover;
   }

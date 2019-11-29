@@ -1,23 +1,19 @@
 <template>
   <div id="app">
-    <parallax :layers="layers" :width="'900px'" :height="'650px'" />
+    <parallax-view :layers="layers" :width="'900px'" :height="'650px'" />
   </div>
 </template>
 
 <script>
-import Parallax from "@/components/Parallax";
 export default {
   name: 'app',
-  components: {
-    Parallax
-  },
   data() {
     return {
       layers: [
         {
           name: "bg_sky",
-          horizontalDisplacement: 0.01,
-          verticalDisplacement: 0.01,
+          horizontalDisplacement: 0,
+          verticalDisplacement: 0,
           image: require('@/assets/layer_sky.png')
         },
         {
