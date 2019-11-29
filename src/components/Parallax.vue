@@ -1,7 +1,9 @@
 <template>
   <div id="parallax" @mousemove="onMouseMove">
-    <div class="mouse-pos">x: {{ mouseX }} y: {{ mouseY }}</div>
-    <div id="target" class="target"></div>
+    <div class="mouse-pos">
+      x: {{ horizontalDistanceFromCenter }} y: {{ verticalDistanceFromCenter }}
+    </div>
+    <div id="target" class="layer"></div>
   </div>
 </template>
 
@@ -10,7 +12,8 @@ export default {
   data() {
     return {
       mouseX: 0,
-      mouseY: 0
+      mouseY: 0,
+      layers: []
     }
   },
   methods: {
@@ -18,40 +21,43 @@ export default {
 
       requestAnimationFrame(this.animateStage);
 
-      const elementWidth = document.getElementById("parallax").offsetWidth;
-      const elementHeight = document.getElementById("parallax").offsetHeight;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
 
       // x related values
-      const horizontalDistanceFromCenter = Math.abs(this.mouseX - elementWidth / 2);
-      const amountOfHorizontalMovement = horizontalDistanceFromCenter * 0.2 / (elementWidth / 2);
+      const horizontalDistanceFromCenter = Math.abs(this.mouseX - windowWidth / 2);
+      const amountOfHorizontalMovement = horizontalDistanceFromCenter * 0.2 / (windowWidth / 2);
 
       // y related values
-      const verticalDistanceFromCenter = Math.abs(this.mouseY - elementHeight / 2);
-      const amountOfVerticalMovement = verticalDistanceFromCenter * 0.4 / (elementHeight / 2);
+      const verticalDistanceFromCenter = Math.abs(this.mouseY - windowHeight / 2);
+      const amountOfVerticalMovement = verticalDistanceFromCenter * 0.2 / (windowHeight / 2);
 
       let horizontalMoveDirection = 1;
-      if (this.mouseX - elementWidth / 2 > 0) {
+      if (this.mouseX - windowWidth / 2 > 0) {
         horizontalMoveDirection = -1;
       }
 
       let verticalMoveDirection = 1;
-      if (this.mouseY - elementHeight / 2 > 0) {
+      if (this.mouseY - windowHeight / 2 > 0) {
         verticalMoveDirection = -1;
       }
 
       const xMovement = amountOfHorizontalMovement * horizontalMoveDirection * 100;
       const yMovement = amountOfVerticalMovement * verticalMoveDirection * 100;
 
-      document.getElementById("target").style['transform'] = `translate(-50%, -50%) translate(${xMovement.toFixed(0)}px, ${yMovement.toFixed(0)}px)`;
+      document.getElementById("target").style['transform'] = `translate(0, 0) translate(${xMovement.toFixed(0)}px, ${yMovement.toFixed(0)}px)`;
 
     },
     onMouseMove(evt) {
       this.mouseX = evt.screenX;
       this.mouseY = evt.screenY;
-
     }
   },
   mounted() {
+    // prepare the layers
+    this.layers.push({
+      img: "~@/assets/layer_pines.png"
+    })
     this.animateStage();
   }
 }
@@ -60,10 +66,11 @@ export default {
 <style lang="scss" scoped>
 #parallax {
   margin: 0 auto;
-  background-color: red;
+  background-color: blueviolet;
   width: 100vw;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 
   .mouse-pos {
     position: absolute;
@@ -74,15 +81,18 @@ export default {
     padding: 5px 10px;
   }
 
-  .target {
+  .layer {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    background-color: lightsalmon;
-    width: 250px;
-    height: 250px;
+    left: 0 - 10%;
+    top: 0 + 10%;
+    bottom: 0 - 10%;
+    right: 0 + 10%;
+    transform-origin: left bottom;
     will-change: transform;
     transition: 250ms all linear;
+    background-image: url("~@/assets/layer_pines.png");
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 }
 </style>
