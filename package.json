@@ -4,6 +4,8 @@
   "private": false,
   "author": "Angel Arcoraci",
   "main": "./dist/vue-parallax-view.js",
+  "license": "MIT",
+  "homepage": "https://github.com/aarcoraci/vue-parallax-view#readme",
   "files": [
     "dist/*",
     "src/*",
