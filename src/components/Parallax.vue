@@ -1,9 +1,9 @@
 <template>
   <div id="vue-parallax-view" :style="{ width: width, height: height }">
     <div
-      class="layer"
+      class="vue-parallax-view-layer"
       v-for="(layer, index) in stageLayers"
-      :id="`layer_${layer.name}`"
+      :id="`vue_parallax_layer_${layer.name}`"
       :key="index"
       :style="{
         backgroundImage: 'url(' + layer.img + ')',
@@ -67,7 +67,7 @@ export default {
         const xMovement = amountOfHorizontalMovement * horizontalDirection * 100;
         const yMovement = amountOfVerticalMovement * verticalDirection * 100;
 
-        document.getElementById(`layer_${layer.name}`).style['transform'] = `translate(0, 0) translate(${xMovement.toFixed(0)}px, ${yMovement.toFixed(0)}px)`;
+        document.getElementById(`vue_parallax_layer_${layer.name}`).style['transform'] = `translate(0, 0) translate(${xMovement.toFixed(0)}px, ${yMovement.toFixed(0)}px)`;
       }
 
     },
@@ -117,7 +117,7 @@ export default {
   position: relative;
   overflow: hidden;
 
-  .layer {
+  .vue-parallax-view-layer {
     position: absolute;
     transform-origin: left bottom;
     will-change: transform;
