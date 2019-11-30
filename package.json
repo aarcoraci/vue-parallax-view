@@ -6,6 +6,14 @@
   "main": "./dist/vue-parallax-view.js",
   "license": "MIT",
   "homepage": "https://github.com/aarcoraci/vue-parallax-view#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aarcoraci/vue-parallax-view.git"
+  },
+  "keywords": [
+    "parallax", 
+    "vue"
+  ],
   "files": [
     "dist/*",
     "src/*",
