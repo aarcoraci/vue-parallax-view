@@ -9,6 +9,10 @@ Install the library and css into your project
 ```sh
 $ yarn add vue-parallax-view
 ```
+or
+```sh
+npm i vue-parallax-view
+```
 
 ### Usage
 
@@ -77,7 +81,7 @@ And in your template add the markup. Although width and height are optional feel
  <vue-parallax-view :layers="layers" :width="'400px'" :height="'350px'"  />
 ```
 
-# Displacement
+### Displacement
 A brief explanation on how displacement works:
 
 Images are scaled in order to allow the parallax effect. If the images where the same size as the portrait containing them the translation wouldn't work. To solve this the displacement parameter is created. It can be interpreted as a *scaling* factor.
@@ -109,3 +113,9 @@ You can override these in any way you like with the **class** parameter:
     class:"my-class"
   }
 ```
+
+### Licence
+
+Vue Parallax View is open source and released under the MIT Licence.
+
+Copyright (c) 2019 Angel Arcoraci
