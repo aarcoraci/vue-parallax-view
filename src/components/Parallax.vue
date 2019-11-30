@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "parallax-view",
+  name: "vue-parallax-view",
   data() {
     return {
       mouseX: 0,
