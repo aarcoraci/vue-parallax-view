@@ -5,6 +5,7 @@
       v-for="(layer, index) in stageLayers"
       :id="`vue_parallax_layer_${layer.name}`"
       :key="index"
+      :class="layer.class"
       :style="{
         backgroundImage: 'url(' + layer.img + ')',
         left: layer.horizontalOffset,
@@ -93,7 +94,8 @@ export default {
         verticalDisplacement: layer.verticalDisplacement,
         horizontalDisplacement: layer.horizontalDisplacement,
         horizontalOffset: `-${horizontalOffset}%`,
-        verticalOffset: `-${verticalOffset}%`
+        verticalOffset: `-${verticalOffset}%`,
+        class: layer.class ? layer.class : ''
       });
     });
 
@@ -111,19 +113,19 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 #vue-parallax-view {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+}
 
-  .vue-parallax-view-layer {
-    position: absolute;
-    transform-origin: left bottom;
-    will-change: transform;
-    transition: 300ms transform linear;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.vue-parallax-view-layer {
+  position: absolute;
+  transform-origin: left bottom;
+  will-change: transform;
+  transition: 300ms transform linear;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
