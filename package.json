@@ -1,10 +1,19 @@
 {
-  "name": "parallax",
+  "name": "vue-parallax-view",
   "version": "0.1.0",
   "private": true,
+  "main": "./dist/vue-parallax-view.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name myLib ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
