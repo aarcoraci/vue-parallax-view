@@ -1,13 +1,12 @@
 <template>
   <div id="parallax" :style="{ width: width, height: height }">
-    <div class="mouse-pos">x: {{ mouseX }} y: {{ mouseY }}</div>
     <div
       class="layer"
       v-for="(layer, index) in stageLayers"
       :id="`layer_${layer.name}`"
       :key="index"
       :style="{
-        backgroundImage: 'url(' + loadImage(layer.img) + ')',
+        backgroundImage: 'url(' + layer.img + ')',
         left: layer.horizontalOffset,
         right: layer.horizontalOffset,
         top: layer.verticalOffset,
@@ -45,9 +44,6 @@ export default {
     }
   },
   methods: {
-    loadImage(image) {
-      return require(`@/assets/${image}`);
-    },
     animateStage() {
 
       requestAnimationFrame(this.animateStage);
@@ -58,9 +54,6 @@ export default {
 
       for (let index = 0; index < this.stageLayers.length; index++) {
         const layer = this.stageLayers[index];
-        if (!document.getElementById(`layer_${layer.name}`)) {
-          continue;
-        }
 
         // calculate how much the layer respond to movement based on the displacement value
         const amountOfHorizontalMovement = horizontalDistanceFromCenter * layer.horizontalDisplacement / this.centerCoords.x;
@@ -89,7 +82,7 @@ export default {
     }
   },
   beforeMount() {
-    // prepare the layers
+    // build the stage layer objects based on the configurations
     this.layers.forEach(layer => {
       const horizontalOffset = layer.horizontalDisplacement * 100 / 2;
       const verticalOffset = layer.verticalDisplacement * 100 / 2;
@@ -122,17 +115,6 @@ export default {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-
-  .mouse-pos {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    background-color: white;
-    border-radius: 4px;
-    padding: 5px 10px;
-    z-index: 100;
-    display: none;
-  }
 
   .layer {
     position: absolute;

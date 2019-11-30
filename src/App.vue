@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <parallax-view :layers="layers" :width="'100vw'" :height="'100vh'" />
+    <parallax :layers="layers" :width="'600px'" :height="'500px'" />
   </div>
 </template>
 
 <script>
+import Parallax from "@/components/Parallax";
 export default {
   name: 'app',
+  components: {
+    Parallax
+  },
   data() {
     return {
       layers: [
@@ -14,37 +18,37 @@ export default {
           name: "bg_sky",
           horizontalDisplacement: 0,
           verticalDisplacement: 0,
-          image: 'bg/layer_sky.png'
+          image: require('@/assets/bg/layer_sky.png')
         },
         {
           name: "bg_clouds",
           horizontalDisplacement: 0.1,
           verticalDisplacement: 0.1,
-          image: 'bg/layer_clouds.png'
+          image: require('@/assets/bg/layer_clouds.png')
         },
         {
           name: "bg_mountain",
           horizontalDisplacement: 0.075,
           verticalDisplacement: 0.075,
-          image: 'bg/layer_bg_mountains.png'
+          image: require('@/assets/bg/layer_bg_mountains.png')
         },
         {
           name: "bg_pines",
           horizontalDisplacement: 0.11,
           verticalDisplacement: 0.11,
-          image: 'bg/layer_bg_pines.png'
+          image: require('@/assets/bg/layer_bg_pines.png')
         },
         {
           name: "ground",
           horizontalDisplacement: 0.15,
           verticalDisplacement: 0.15,
-          image: 'bg/layer_ground.png'
+          image: require('@/assets/bg/layer_ground.png')
         },
         {
           name: "pines",
           horizontalDisplacement: 0.3,
           verticalDisplacement: 0.3,
-          image: 'bg/layer_pines.png'
+          image: require('@/assets/bg/layer_pines.png')
         }
       ]
     }
@@ -65,5 +69,14 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+.tv {
+  position: absolute;
+  left: 300px;
+  top: 200px;
+  width: 400px;
+  height: 350px;
+  border: 5px solid red;
 }
 </style>
