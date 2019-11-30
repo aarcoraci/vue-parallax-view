@@ -2,7 +2,7 @@ import Parallax from "./components/Parallax";
 
 const VueParallaxView = {
   install(Vue) {
-    Vue.component('parallax-view', Parallax);
+    Vue.component('vue-parallax-view', Parallax);
   }
 }
 
