@@ -1,9 +1,9 @@
 {
   "name": "vue-parallax-view",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "author": "Angel Arcoraci",
-  "main": "./dist/vue-parallax-view.js",
+  "main": "./dist/vue-parallax-view.common.js",
   "license": "MIT",
   "homepage": "https://github.com/aarcoraci/vue-parallax-view#readme",
   "repository": {
@@ -24,7 +24,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name myLib ./src/index.js",
+    "build-bundle": "vue-cli-service build --target lib --name vue-parallax-view ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
