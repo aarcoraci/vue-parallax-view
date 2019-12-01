@@ -11,7 +11,7 @@ $ yarn add vue-parallax-view
 ```
 or
 ```sh
-npm i vue-parallax-view
+$ npm i vue-parallax-view
 ```
 
 ### Usage
@@ -27,7 +27,7 @@ import "vue-parallax-view/dist/vue-parallax-view.css";
 All left to do is configure the layers array and passe it to the component. In this example I'm using images from the assets directory, if this is your case use the **require(...)** function.
 
 #### parameters
-- **name:** *unique* name for the layer. Make sure this is unique
+- **name:** *unique* name for the layer. Make sure this is **unique**
 - **horizontalDisplacement:** the amount of horizontal displacement for this layer. See [displacement](#displacement) for more information
 - **verticalDisplacement:** the amount of vertical displacement for this layer. See [displacement](#displacement) for more information
 - **image:** image resource to be use for this layer. Can be from the assets folder (use **require()** function), an absolute url or a relative url for your public/static folder.
@@ -113,6 +113,8 @@ You can override these in any way you like with the **class** parameter:
     class:"my-class"
   }
 ```
+#### :warning: WARNING
+Be careful when playing with the transition rule. Using anything but linear will result on a choppy animation. The same occurs if you decrease the time.
 
 ### Licence
 
