@@ -110,9 +110,27 @@ You can override these in any way you like with the **class** parameter:
     horizontalDisplacement: 0.3,
     verticalDisplacement: 0.3,
     image: require('@/assets/bg/layer_pines.png'),
-    class:"my-class"
+    class:"my-custom-layer-class"
   }
 ```
+
+
+If you still don't see the changes try to give more specificity:
+```html
+ <vue-parallax-view class="my-parallax" :layers="layers" :width="'400px'" :height="'350px'"  />
+```
+
+```css
+.my-parallax .my-custom-layer-class {
+  position: absolute;
+  transform-origin: left bottom;
+  will-change: transform;
+  transition: 300ms transform linear;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+```
+
 #### :warning: WARNING
 Be careful when playing with the transition rule. Using anything but linear will result on a choppy animation. The same occurs if you decrease the time.
 
