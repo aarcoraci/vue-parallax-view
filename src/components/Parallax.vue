@@ -1,5 +1,5 @@
 <template>
-  <div id="vue-parallax-view" :style="{ width: width, height: height }">
+  <div class="vue-parallax-view" :style="{ width: width, height: height }">
     <div
       class="vue-parallax-view-layer"
       v-for="(layer, index) in stageLayers"
@@ -114,7 +114,7 @@ export default {
 </script>
 
 <style lang="scss" >
-#vue-parallax-view {
+.vue-parallax-view {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
