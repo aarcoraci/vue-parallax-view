@@ -3,6 +3,9 @@ Create a composite control that displays different images that react to the mous
 
 ![Drag Racing](https://raw.githubusercontent.com/aarcoraci/vue-parallax-view/master/preview.gif) 
 
+### Demo
+[the thompsons demo](https://aarcoraci.github.io/vueparallaxviewdemo/)
+
 ### Installation
 Install the library and css into your project
 
