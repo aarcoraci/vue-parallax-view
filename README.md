@@ -137,6 +137,10 @@ If you still don't see the changes try to give more specificity:
 #### :warning: WARNING
 Be careful when playing with the transition rule. Using anything but linear will result on a choppy animation. The same occurs if you decrease the time.
 
+### Enjoying this component ? buy me a beer :beer: 
+
+qqwhpypxxwc6w5pms8s4d3zz8w37t6rfa5hq89u5pg
+
 ### Licence
 
 Vue Parallax View is open source and released under the MIT Licence.
