@@ -1,6 +1,6 @@
 {
   "name": "vue-parallax-view",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "author": "Angel Arcoraci",
   "main": "./dist/vue-parallax-view.common.js",
